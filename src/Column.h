@@ -1,9 +1,13 @@
+#pragma once
 #include <string.h>
 #include <iostream>
-"include "Cell.h"
+#include "Cell.h"
+
+using namespace std;
 
 
 class Column{
+protected:
 	int s=0;
 	string name="";
 	
@@ -11,65 +15,40 @@ class Column{
 		
 public:	
 	Column(int s=0){		
-		this->s=s
+		this->s=s;
 		//pTab= new Cell[s];		
 	}
 	
 	~Column(){			
 		//delete[] pTab;
 	}
-	
-	
-	
+		
 };
 
 
 
 
-class IColumn{
+class IColumn : public Column{
 	IntCell* pIntTab=nullptr;
-	// int s=0;
-	// string name="";
+
 	
 public:	
-	IColumn(int s=0){		
-		this->s=s
-		pIntTab= new IntCell[s];		
-	}
+	IColumn(int s=0);
+	~IColumn();
 	
-	~IColumn(){			
-		delete[] pIntTab;
-	}
-	
-	void resize(int newS = 2 * s);
+	void resize(int newS = -1);
 };
 //koniec int Column
-void IColumn::resize(int newS){
-		IntCell* tempT = new Int[newS];
-		
-		for (int i=0; i<s && i<newS ; i++){
-			tempT[i]=pIntTab[i];
-		}
-		s=newS;
-		delete []pIntTab;
-		pIntTab=tempT;		
-}
 
 
 
-class StrColumn{
+
+class StrColumn : public Column{
 	StringCell* pStrTab=nullptr;
-	int s=0;
-	string name="";
 	
 public:	
-	IColumn(int s=0){		
-		this->s=s
-		pIntTab= new IntCell[s];		
-	}
+	StrColumn(int s=0);	
+	~StrColumn();
 	
-	~IColumn(){			
-		delete[] pIntTab;
-	}
 };
 // koniec str Column

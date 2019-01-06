@@ -4,19 +4,28 @@
 
 
 class Arkusz{
-	* pIntTab=nullptr;
+	int sizeR=0;
+	int sizeC=0;
+	Column** ptCol=nullptr;
 	int s=0;
 	string name="";
 	
 public:	
-	IColumn(int s=0){		
-		this->s=s
-		pIntTab= new IntCell[s];		
-	}
+	Arkusz(int s=0);
 	
-	~IColumn(){			
-		delete[] pIntTab;
-	}
+	Arkusz(int rows, int columns);
+	
+	~Arkusz();
+	
+	int getSizeR();
+	int getSizeC();
+	
+	int getVal(int r,int c);
+	
+	void init();
+	
+	void resize(int newS = -1);
+	void clear();
 };
 
 // to do: rozmiary zawartość operacje

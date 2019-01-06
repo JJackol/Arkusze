@@ -1,10 +1,14 @@
-#pragmaonce
+#pragma once
 #include <string.h>
 #include <iostream>
+#include "Interfaces.h"
 
-class Cell{
+using namespace std;
+
+class Cell : public IPrintable{
 public:
 	Cell(){	}
+	void print(){};
 };
 
 
@@ -17,7 +21,7 @@ public:
 	IntCell(int val=0){
 		this->val=val;
 	}
-	void setVal(int set_val)
+	void setVal(int set_val);
 	
 	int getVal(){
 		return val;
@@ -33,13 +37,15 @@ class StringCell : public Cell{
 	string val;
 	
 public:
-	StringCell(int val=0){
+	StringCell(string val=0){
 		this->val=val;
 	}
-	void setVal(int set_val)
+	void setVal(string set_val);
 	
 	string getVal(){
 		return val;
 	}
 };
 //koniec stringCell
+
+//to do zamiana setstring, 
