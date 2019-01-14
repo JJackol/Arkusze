@@ -20,7 +20,9 @@ public:
 	int getSizeR();
 	int getSizeC();
 	
-	int getVal(int r,int c);
+	void printVal(int r,int c);
+	
+	void setVal(int r, int c, int set_val);
 	
 	void init();
 	

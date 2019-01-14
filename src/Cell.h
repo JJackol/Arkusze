@@ -8,7 +8,7 @@ using namespace std;
 class Cell : public IPrintable{
 public:
 	Cell(){	}
-	void print(){};
+	virtual void print()=0;
 };
 
 
@@ -21,10 +21,15 @@ public:
 	IntCell(int val=0){
 		this->val=val;
 	}
-	void setVal(int set_val);
+	void setVal(int set_val){
+		val=set_val;
+	};
 	
 	int getVal(){
 		return val;
+	}
+	void print(){
+		cout<<val;
 	}
 	
 };	
@@ -44,6 +49,10 @@ public:
 	
 	string getVal(){
 		return val;
+	}
+	
+	void print(){
+		cout<<val;
 	}
 };
 //koniec stringCell

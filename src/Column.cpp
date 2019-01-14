@@ -13,6 +13,14 @@ IColumn::IColumn(int s){
 IColumn::~IColumn(){			
 		delete[] pIntTab;
 	}
+	
+void IColumn::printVal(int n){
+	pIntTab[n].print();
+}
+
+void IColumn::setVal(int n, int set_val){
+		pIntTab[n].setVal(set_val);
+	};
 
 void IColumn::resize(int newS){
 		IntCell* tempT = new IntCell[newS];

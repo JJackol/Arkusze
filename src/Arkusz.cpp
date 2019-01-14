@@ -16,6 +16,10 @@ Arkusz::Arkusz(int rows, int columns){
 		
 }
 
+void Arkusz::setVal(int r, int c, int set_val){
+		ptCol[c]->setVal(r,set_val);
+	};
+
 void Arkusz::init(){
 		for (int i=0; i<sizeC ; i++){
 			ptCol[i]=new IColumn(sizeR);
@@ -35,8 +39,8 @@ int Arkusz::getSizeC(){
 		return sizeC;
 }
 
-int Arkusz::getVal(int r,int c){
-	return 0;
+void Arkusz::printVal(int r,int c){
+	return ptCol[c]->printVal(r);
 }
 
 

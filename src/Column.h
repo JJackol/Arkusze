@@ -22,6 +22,9 @@ public:
 	~Column(){			
 		//delete[] pTab;
 	}
+	
+	virtual void printVal(int n)=0;
+	virtual void setVal(int , int )=0;
 		
 };
 
@@ -36,6 +39,10 @@ public:
 	IColumn(int s=0);
 	~IColumn();
 	
+	void printVal(int n);
+	
+	void setVal(int n, int set_val);
+	
 	void resize(int newS = -1);
 };
 //koniec int Column
@@ -49,6 +56,7 @@ class StrColumn : public Column{
 public:	
 	StrColumn(int s=0);	
 	~StrColumn();
+	void printVal(int n){}
 	
 };
 // koniec str Column
