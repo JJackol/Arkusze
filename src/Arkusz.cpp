@@ -22,7 +22,7 @@ void Arkusz::setVal(int r, int c, int set_val){
 
 void Arkusz::init(){
 		for (int i=0; i<sizeC ; i++){
-			ptCol[i]=new IColumn(sizeR);
+			ptCol[i]=new IntColumn(sizeR);
 		}
 }
 

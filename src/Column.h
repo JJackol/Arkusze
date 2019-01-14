@@ -5,7 +5,8 @@
 
 using namespace std;
 
-
+// todo int col
+// abstract
 class Column{
 protected:
 	int s=0;
@@ -13,35 +14,29 @@ protected:
 	
  	// Cell* pTab=nullptr;
 		
-public:	
-	Column(int s=0){		
-		this->s=s;
-		//pTab= new Cell[s];		
-	}
-	
-	~Column(){			
-		//delete[] pTab;
-	}
+public:
 	
 	virtual void printVal(int n)=0;
 	virtual void setVal(int , int )=0;
+	virtual void setVal(int , string )=0;
 		
 };
 
 
 
 
-class IColumn : public Column{
+class IntColumn : public Column{
 	IntCell* pIntTab=nullptr;
 
 	
 public:	
-	IColumn(int s=0);
-	~IColumn();
+	IntColumn(int s=0);
+	~IntColumn();
 	
 	void printVal(int n);
 	
 	void setVal(int n, int set_val);
+	void setVal(int , string );
 	
 	void resize(int newS = -1);
 };

@@ -13,8 +13,10 @@ int main()
 	
 	Arkusz a(4,5);
 	a.setVal(1,1,2);
-    cout << "Hello, World!"<< endl;
+    
 	UserI ui;
+	
+	ui.sayHello();
 	ui.print(a);
 	
 	

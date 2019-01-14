@@ -19,3 +19,9 @@ void UserI::print(Arkusz &a){
 	}
 	
 }
+
+	
+void UserI::sayHello(){
+	cout<<helloM<<endl;
+	
+}

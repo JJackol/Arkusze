@@ -6,20 +6,16 @@
 
 class FormatSettings{
 	int rowWidth;
-	int decAfterComa;
+	//int decAfterComa;
 	int stringWidth;
-	
-	
-	
 };
 //to do
 
 
 
 class UserI{
-	Arkusz* a;
-	string helloM;
-	
+	//Arkusz* a;
+	string helloM="hello";
 	
 	FormatSettings sett;
 	
@@ -27,11 +23,13 @@ public:
 	UserI();
 	~UserI();
 	
+	void sayHello();
+	
 	void print(Arkusz &a);
 	
 };
 
 
 
-//	settings
+//	todo settings
 //

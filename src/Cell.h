@@ -34,7 +34,7 @@ public:
 	
 };	
 //koniec Int cell
-
+//
 
 
 

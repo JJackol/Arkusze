@@ -5,24 +5,27 @@
 //
 //  IntColumn
 //
-IColumn::IColumn(int s){		
+IntColumn::IntColumn(int s){		
 		this->s=s;
 		pIntTab= new IntCell[s];
 	}
 	
-IColumn::~IColumn(){			
+IntColumn::~IntColumn(){			
 		delete[] pIntTab;
 	}
 	
-void IColumn::printVal(int n){
+void IntColumn::printVal(int n){
 	pIntTab[n].print();
 }
 
-void IColumn::setVal(int n, int set_val){
+void IntColumn::setVal(int n, int set_val){
 		pIntTab[n].setVal(set_val);
 	};
+void IntColumn::setVal(int , string ){
+	throw int(-1);
+}
 
-void IColumn::resize(int newS){
+void IntColumn::resize(int newS){
 		IntCell* tempT = new IntCell[newS];
 		if (newS<0){
 			newS=2*s;
