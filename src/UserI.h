@@ -14,19 +14,27 @@ class FormatSettings{
 
 
 class UserI{
-	//Arkusz* a;
+	Arkusz* a;
 	string helloM="hello";
+	string menu="";
 	
-	FormatSettings sett;
+	//FormatSettings sett;
 	
 public:
-	UserI();
+	UserI(Arkusz* ark);
 	~UserI();
 	
+	void mainLoop();
 	void sayHello();
 	
 	void print(Arkusz &a);
+	string prompt(string m);
+	char getChar(string);
+	int getInt(string);
+	void printMenu();
 	
+	
+
 };
 
 
