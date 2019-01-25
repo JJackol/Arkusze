@@ -2,7 +2,8 @@
 
 UserI::UserI(Arkusz* ark){	
 	a=ark;
-	menu="1.Nowy arkusz\n";
+    menu= "\n\n\n";
+	menu+=  "1.Nowy arkusz\n";
 	menu+=	"2.Usun arkusz\n";
 	menu+=	"3.Edytuj arkusz\n";
 	menu+=	"4.Zapisz arkusz";
@@ -21,11 +22,11 @@ void UserI::mainLoop(){
 		
 		switch(select){
 			case 1:
-				newArkusz(a);
+				createArkusz(a);
 				break;
 			case 2:
 				break;
-				deleteArkusz();
+				destroyArkusz();
 			case 3:
 				break;
 			case 4:
@@ -90,3 +91,11 @@ void UserI::printMenu(){
 		cout<<menu<<endl;
 	}
 
+void UserI::createArkusz(Arkusz* a){
+    cout<<"creating arkusz"<<endl;
+}
+
+void UserI::destroyArkusz(){
+    cout<< "destroy"<<endl;
+    
+}

@@ -33,7 +33,8 @@ public:
 	int getInt(string);
 	void printMenu();
 	
-	
+    void createArkusz(Arkusz* a);
+    void destroyArkusz();
 
 };
 
