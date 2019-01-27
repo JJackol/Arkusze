@@ -1,5 +1,5 @@
 #include "Arkusz.h"
-
+#include <stdlib.h>
 
 
 Arkusz::Arkusz(int s){		
@@ -8,7 +8,7 @@ Arkusz::Arkusz(int s){
 }
 	
 Arkusz::Arkusz(int rows, int columns){
-		this->s=0;
+		this->s=columns;
 		ptCol= new Column*[columns];
 		sizeR=rows;
 		sizeC=columns;
@@ -22,8 +22,19 @@ void Arkusz::setVal(int r, int c, int set_val){
 
 void Arkusz::init(){
 		for (int i=0; i<sizeC ; i++){
-			ptCol[i]=new IntColumn(sizeR);
+            std::string name = "\""+std::to_string(i)+"\"";
+            
+			ptCol[i]=new IntColumn(sizeR, name);
 		}
+}
+
+void Arkusz::pushBack(Column* pCol){
+    if(s<=sizeC){
+        resize(-1);//
+    }
+    ptCol[sizeC]=pCol;
+    sizeC++;
+    
 }
 
 	
@@ -43,12 +54,12 @@ void Arkusz::printVal(int r,int c){
 	return ptCol[c]->printVal(r);
 }
 
-
+// doubles the size if newS<0
 void Arkusz::resize(int newS){
-		Column** tempT = new Column*[newS];
 		if (newS<0){
 			newS=2*s;
 		}
+		Column** tempT = new Column*[newS];
 		for (int i=0; i<s && i<newS ; i++){
 			tempT[i]=ptCol[i];
 		}
@@ -67,4 +78,11 @@ void Arkusz::clear(){
 	
 		delete[] ptCol;
 		s=0;
+}
+
+void Arkusz::printColName(int c){
+    string name="";
+    name = ptCol[c]->getName();
+    std::cout<<name;
+    
 }

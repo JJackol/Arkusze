@@ -1,6 +1,9 @@
 #pragma once
+#include <stdlib.h>
+#include <string.h>
 #include "Cell.h"
 #include "Column.h"
+
 
 
 class Arkusz{
@@ -25,9 +28,11 @@ public:
 	void setVal(int r, int c, int set_val);
 	
 	void init();
+    void pushBack(Column* pCol);
 	
 	void resize(int newS = -1);
 	void clear();
+    void printColName(int c);
 };
 
 // to do: rozmiary zawartość operacje

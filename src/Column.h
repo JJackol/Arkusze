@@ -16,9 +16,12 @@ protected:
 		
 public:
 	
+    
 	virtual void printVal(int n)=0;
 	virtual void setVal(int , int )=0;
 	virtual void setVal(int , string )=0;
+    void printName();
+    string getName();
 		
 };
 
@@ -29,8 +32,8 @@ class IntColumn : public Column{
 	IntCell* pIntTab=nullptr;
 
 	
-public:	
-	IntColumn(int s=0);
+public:
+	IntColumn(int s, string n);
 	~IntColumn();
 	
 	void printVal(int n);

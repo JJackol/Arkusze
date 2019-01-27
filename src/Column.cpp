@@ -2,10 +2,15 @@
 
 
 
+string Column::getName(){
+    return name;
+}
+
 //
 //  IntColumn
 //
-IntColumn::IntColumn(int s){		
+IntColumn::IntColumn(int s, string n){		
+        name=n;
 		this->s=s;
 		pIntTab= new IntCell[s];
 	}

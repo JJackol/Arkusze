@@ -51,8 +51,13 @@ void UserI::mainLoop(){
 }
 
 void UserI::print(Arkusz &a){
-	
+	for (int c=0; c< a.getSizeC(); c++){
+        a.printColName(c);
+        cout<<'\t';
+    }
+    cout<<endl;
 	for(int r=0; r<a.getSizeR(); r++){
+        
 		for (int c=0; c< a.getSizeC(); c++){
 			a.printVal(r,c);
 			cout<<'\t';
