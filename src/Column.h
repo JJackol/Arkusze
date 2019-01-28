@@ -19,7 +19,7 @@ public:
     
 	virtual void printVal(int n)=0;
 	virtual void setVal(int , int )=0;
-	virtual void setVal(int , string )=0;
+	//virtual void setVal(int , string )=0;
     void printName();
     string getName();
 		
@@ -33,13 +33,18 @@ class IntColumn : public Column{
 
 	
 public:
-	IntColumn(int s, string n);
+	IntColumn(int s, string n);	
+    IntColumn(IntColumn& c){
+        this->s=c.s;
+        this->name=c.name;
+        this->pIntTab=c.pIntTab;
+    }
 	~IntColumn();
 	
 	void printVal(int n);
 	
 	void setVal(int n, int set_val);
-	void setVal(int , string );
+//	void setVal(int , string );
 	
 	void resize(int newS = -1);
 };
@@ -56,7 +61,7 @@ public:
 	~StrColumn();
     
     void setVal(int , int );
-	void setVal(int , string );
+	//void setVal(int , string );
     
 	void printVal(int n){}
 	

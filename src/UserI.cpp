@@ -16,7 +16,7 @@ UserI::~UserI(){
 void UserI::mainLoop(){
 	int select=0;
 	do{
-		print(*a);
+		print(a);
         cout<<endl<<message<<endl<<endl;
 		printMenu();
 		select=getInt("Wprowadz liczbe  [0 aby wyjsc]");
@@ -51,16 +51,16 @@ void UserI::mainLoop(){
 	
 }
 
-void UserI::print(Arkusz &a){
-	for (int c=0; c< a.getSizeC(); c++){
-        a.printColName(c);
+void UserI::print(Arkusz *a){
+	for (int c=0; c< a->getSizeC(); c++){
+        a->printColName(c);
         cout<<'\t';
     }
     cout<<endl;
-	for(int r=0; r<a.getSizeR(); r++){
+	for(int r=0; r<a->getSizeR(); r++){
         
-		for (int c=0; c< a.getSizeC(); c++){
-			a.printVal(r,c);
+		for (int c=0; c< a->getSizeC(); c++){
+			a->printVal(r,c);
 			cout<<'\t';
 		}
 		std::cout<<std::endl;
@@ -99,7 +99,7 @@ void UserI::printMenu(){
 
 void UserI::createArkusz(Arkusz* a){
     a->clearCols();
-    Column* tempCol;
+    Column* tempCol=nullptr;
     cout<<"creating arkusz"<<endl;
     int rows=getInt("Podaj liczbe wierszy:");
     int cols=getInt("Podaj liczbe kolumn:");
@@ -115,7 +115,8 @@ void UserI::createArkusz(Arkusz* a){
         {
             tempName=prompt("Podaj nazwe kolumny");
             tempCol=new IntColumn(rows, tempName);
-            a->ptCol[i]=tempCol;
+            //a->ptCol[i]=tempCol;
+            a->pushBack(tempCol);
         }
         else if(c=='s')
         {
@@ -124,15 +125,17 @@ void UserI::createArkusz(Arkusz* a){
 				std::string name = "\""+std::to_string(i)+"\"";
 
             tempCol=new StrColumn(rows, tempName);
-            a->ptCol[i]=tempCol;
+            //a->ptCol[i]=tempCol;
 
-            //a->pushBack(tempCol);
+            a->pushBack(tempCol);
         }
         else
         {
             cout<<"niepoprwany typ"<<endl;
             i--;
         }
+        //
+        
         
     }
     

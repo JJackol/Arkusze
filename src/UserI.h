@@ -28,7 +28,7 @@ public:
 	void mainLoop();
 	void sayHello();
 	
-	void print(Arkusz &a);
+	void print(Arkusz *a);
 	string prompt(string m);
 	char getChar(string);
 	int getInt(string);

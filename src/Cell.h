@@ -45,7 +45,9 @@ public:
 	StringCell(string val=0){
 		this->val=val;
 	}
-	void setVal(string set_val);
+	void setVal(string set_val){
+        val=set_val;
+    }
 	
 	string getVal(){
 		return val;

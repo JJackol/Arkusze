@@ -12,6 +12,7 @@ class Arkusz{
 	Column** ptCol=nullptr;
 	int s=1;
 	string name="";
+    bool empty=true;
 	
 public:	
 	Arkusz(int s=0);
@@ -23,14 +24,14 @@ public:
 	int getSizeR();
 	int getSizeC();
     void setSize(int r, int c);
-	
+	bool isEmpty();
 	void printVal(int r,int c);
 	
 	void setVal(int r, int c, int set_val);
 	
 	void init();
     void pushBack(Column* pCol);
-	Column* popBack();
+	void popBack();
 	
 	void resize(int newS = -1);
 	void clear();

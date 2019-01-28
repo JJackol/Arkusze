@@ -26,9 +26,9 @@ void IntColumn::printVal(int n){
 void IntColumn::setVal(int n, int set_val){
 		pIntTab[n].setVal(set_val);
 	};
-void IntColumn::setVal(int , string ){
-	throw int(-1);
-}
+//void IntColumn::setVal(int , string ){
+//	throw int(-1);
+//}
 
 void IntColumn::resize(int newS){
 		IntCell* tempT = new IntCell[newS];
@@ -58,5 +58,5 @@ StrColumn::~StrColumn(){
 }
 void StrColumn::setVal(int s, int r){}
 
-void StrColumn::setVal(int s, string n){}
+//void StrColumn::setVal(int s, string n){}
 	

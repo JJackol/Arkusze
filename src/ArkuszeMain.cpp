@@ -12,6 +12,7 @@ int main()
 {
 	
 	Arkusz a(4,5);
+    a.init();
 	a.setVal(1,1,2);
     
 	UserI ui(&a);

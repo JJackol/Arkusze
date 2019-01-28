@@ -12,7 +12,8 @@ Arkusz::Arkusz(int rows, int columns){
 		ptCol= new Column*[columns];
 		sizeR=rows;
 		sizeC=columns;
-		init();
+		empty=true;
+		//init();
 		
 }
 
@@ -30,15 +31,23 @@ void Arkusz::init(){
 
 void Arkusz::pushBack(Column* pCol){
     if(s<=sizeC){
-        resize(-1);//
+        resize(-1);//podwojenie pamięci na kolumny
     }
     ptCol[sizeC]=pCol;
     sizeC++;
+    empty=false;
     
 }
-
-Column* Arkusz::popBack(){
-	
+//doesnt return last item, just delets it.
+void Arkusz::popBack(){
+	if(sizeC==0){
+        empty=true;
+        return;
+    }
+    else{
+		delete ptCol[sizeC-1];
+		sizeC--;
+    }
 }
 
 	
@@ -58,6 +67,9 @@ void Arkusz::setSize(int r, int c){
     sizeC=c;
     sizeR=r;
 }
+bool Arkusz::isEmpty(){
+	return empty;
+}
 
 void Arkusz::printVal(int r,int c){
 	return ptCol[c]->printVal(r);
@@ -69,11 +81,10 @@ void Arkusz::resize(int newS){
 			newS=2*s;
 		}
 		Column** tempT = new Column*[newS];
-		for (int i=0; i<s && i<newS ; i++){
+		for (int i=0; i<sizeC && i<newS ; i++){
 			tempT[i]=ptCol[i];
 		}
-		
-		clear();
+		delete ptCol;
 		
 		s=newS;
 		
@@ -90,9 +101,10 @@ void Arkusz::clear(){
 }
 
 void Arkusz::clearCols(){
-			for(int i=0; i<s; i++){
+			for(int i=0; i<sizeC; i++){
 			delete ptCol[i];
 		}
+		empty=true;
 		sizeC=0;
         sizeR=0;
 		
