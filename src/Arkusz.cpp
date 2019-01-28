@@ -37,6 +37,10 @@ void Arkusz::pushBack(Column* pCol){
     
 }
 
+Column* Arkusz::popBack(){
+	
+}
+
 	
 Arkusz::~Arkusz(){	
 		clear();

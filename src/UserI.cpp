@@ -103,7 +103,7 @@ void UserI::createArkusz(Arkusz* a){
     cout<<"creating arkusz"<<endl;
     int rows=getInt("Podaj liczbe wierszy:");
     int cols=getInt("Podaj liczbe kolumn:");
-    
+    a->setSize(rows,cols);
     
     cout<<"Podaj kolejno typy kolumn [wprowadz pojedyncze znaki; i=int, s=string]"<<endl;
     char c;
@@ -115,13 +115,18 @@ void UserI::createArkusz(Arkusz* a){
         {
             tempName=prompt("Podaj nazwe kolumny");
             tempCol=new IntColumn(rows, tempName);
-            a->pushBack(tempCol);
+            a->ptCol[i]=tempCol;
         }
         else if(c=='s')
         {
             tempName=prompt("Podaj nazwe kolumny");
+			if(tempName=="")
+				std::string name = "\""+std::to_string(i)+"\"";
+
             tempCol=new StrColumn(rows, tempName);
-            a->pushBack(tempCol);
+            a->ptCol[i]=tempCol;
+
+            //a->pushBack(tempCol);
         }
         else
         {

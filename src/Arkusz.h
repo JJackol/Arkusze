@@ -30,6 +30,7 @@ public:
 	
 	void init();
     void pushBack(Column* pCol);
+	Column* popBack();
 	
 	void resize(int newS = -1);
 	void clear();
