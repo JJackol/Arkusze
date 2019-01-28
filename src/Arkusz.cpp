@@ -50,6 +50,11 @@ int Arkusz::getSizeC(){
 		return sizeC;
 }
 
+void Arkusz::setSize(int r, int c){
+    sizeC=c;
+    sizeR=r;
+}
+
 void Arkusz::printVal(int r,int c){
 	return ptCol[c]->printVal(r);
 }
@@ -77,7 +82,16 @@ void Arkusz::clear(){
 		}
 	
 		delete[] ptCol;
-		s=0;
+		
+}
+
+void Arkusz::clearCols(){
+			for(int i=0; i<s; i++){
+			delete ptCol[i];
+		}
+		sizeC=0;
+        sizeR=0;
+		
 }
 
 void Arkusz::printColName(int c){

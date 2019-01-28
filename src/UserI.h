@@ -17,6 +17,7 @@ class UserI{
 	Arkusz* a;
 	string helloM="hello";
 	string menu="";
+    string message="message";
 	
 	//FormatSettings sett;
 	

@@ -10,7 +10,7 @@ class Arkusz{
 	int sizeR=0;
 	int sizeC=0;
 	Column** ptCol=nullptr;
-	int s=0;
+	int s=1;
 	string name="";
 	
 public:	
@@ -22,6 +22,7 @@ public:
 	
 	int getSizeR();
 	int getSizeC();
+    void setSize(int r, int c);
 	
 	void printVal(int r,int c);
 	
@@ -32,6 +33,7 @@ public:
 	
 	void resize(int newS = -1);
 	void clear();
+    void clearCols();
     void printColName(int c);
 };
 

@@ -2,7 +2,7 @@
 
 UserI::UserI(Arkusz* ark){	
 	a=ark;
-    menu= "\n\n\n";
+    menu= "";
 	menu+=  "1.Nowy arkusz\n";
 	menu+=	"2.Usun arkusz\n";
 	menu+=	"3.Edytuj arkusz\n";
@@ -17,6 +17,7 @@ void UserI::mainLoop(){
 	int select=0;
 	do{
 		print(*a);
+        cout<<endl<<message<<endl<<endl;
 		printMenu();
 		select=getInt("Wprowadz liczbe  [0 aby wyjsc]");
 		
@@ -97,7 +98,40 @@ void UserI::printMenu(){
 	}
 
 void UserI::createArkusz(Arkusz* a){
+    a->clearCols();
+    Column* tempCol;
     cout<<"creating arkusz"<<endl;
+    int rows=getInt("Podaj liczbe wierszy:");
+    int cols=getInt("Podaj liczbe kolumn:");
+    
+    
+    cout<<"Podaj kolejno typy kolumn [wprowadz pojedyncze znaki; i=int, s=string]"<<endl;
+    char c;
+    string tempName;
+    for(int i=0;i<cols;i++){
+        
+        c=getChar("Podaj typ kolumny");
+        if (c=='i')
+        {
+            tempName=prompt("Podaj nazwe kolumny");
+            tempCol=new IntColumn(rows, tempName);
+            a->pushBack(tempCol);
+        }
+        else if(c=='s')
+        {
+            tempName=prompt("Podaj nazwe kolumny");
+            tempCol=new StrColumn(rows, tempName);
+            a->pushBack(tempCol);
+        }
+        else
+        {
+            cout<<"niepoprwany typ"<<endl;
+            i--;
+        }
+        
+    }
+    
+    
 }
 
 void UserI::destroyArkusz(){

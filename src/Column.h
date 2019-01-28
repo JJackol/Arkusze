@@ -52,8 +52,12 @@ class StrColumn : public Column{
 	StringCell* pStrTab=nullptr;
 	
 public:	
-	StrColumn(int s=0);	
+	StrColumn(int s, string n);	
 	~StrColumn();
+    
+    void setVal(int , int );
+	void setVal(int , string );
+    
 	void printVal(int n){}
 	
 };

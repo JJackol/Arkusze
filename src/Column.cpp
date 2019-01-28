@@ -47,11 +47,16 @@ void IntColumn::resize(int newS){
 //
 //	StringColumn
 //
-StrColumn::StrColumn(int s){		
+StrColumn::StrColumn(int s, string n){	
+        name = n;
 		this->s=s;
 		pStrTab= new StringCell[s];		
 	}
 	
 StrColumn::~StrColumn(){			
 		delete[] pStrTab;
-	}
+}
+void StrColumn::setVal(int s, int r){}
+
+void StrColumn::setVal(int s, string n){}
+	
