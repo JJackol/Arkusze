@@ -1,7 +1,9 @@
 #include "UserI.h"
 
-UserI::UserI(Arkusz* ark){	
+UserI::UserI(Arkusz* ark){
+
 	a=ark;
+
     menu= "";
 	menu+=  "1.Nowy arkusz\n";
 	menu+=	"2.Usun arkusz\n";
@@ -10,7 +12,7 @@ UserI::UserI(Arkusz* ark){
 	menu+=	"5.Wczytaj arkusz";
 }
 UserI::~UserI(){
-		
+
 }
 
 void UserI::mainLoop(){
@@ -18,12 +20,13 @@ void UserI::mainLoop(){
 	do{
 		print(a);
         cout<<endl<<message<<endl<<endl;
+        message="";
 		printMenu();
 		select=getInt("Wprowadz liczbe  [0 aby wyjsc]");
-		
+
 		switch(select){
 			case 1:
-				createArkusz(a);
+				createArkusz();
 				break;
 			case 2:
 				break;
@@ -43,36 +46,41 @@ void UserI::mainLoop(){
 
 			default:
 				break;
-		
+
 		}
-		
-		
+
+
 	}while(select);
-	
+
 }
 
 void UserI::print(Arkusz *a){
+    if(a==nullptr){
+        message += " - brak arkusza do wyswietlenia, stworz nowy arkusz \n";
+        return;
+    }
+
 	for (int c=0; c< a->getSizeC(); c++){
         a->printColName(c);
         cout<<'\t';
     }
     cout<<endl;
 	for(int r=0; r<a->getSizeR(); r++){
-        
+
 		for (int c=0; c< a->getSizeC(); c++){
 			a->printVal(r,c);
 			cout<<'\t';
 		}
 		std::cout<<std::endl;
-		
+
 	}
-	
+
 }
 
-	
+
 void UserI::sayHello(){
 	cout<<helloM<<endl;
-	
+
 }
 string UserI::prompt(string m){
 	string c="";
@@ -97,19 +105,20 @@ void UserI::printMenu(){
 		cout<<menu<<endl;
 	}
 
-void UserI::createArkusz(Arkusz* a){
-    a->clearCols();
+void UserI::createArkusz(){
+    //delete a;
     Column* tempCol=nullptr;
     cout<<"creating arkusz"<<endl;
     int rows=getInt("Podaj liczbe wierszy:");
     int cols=getInt("Podaj liczbe kolumn:");
-    a->setSize(rows,cols);
-    
+
+    a=new Arkusz(rows,cols);
+    //a->setSize(rows,cols);
     cout<<"Podaj kolejno typy kolumn [wprowadz pojedyncze znaki; i=int, s=string]"<<endl;
     char c;
     string tempName;
     for(int i=0;i<cols;i++){
-        
+
         c=getChar("Podaj typ kolumny");
         if (c=='i')
         {
@@ -135,14 +144,16 @@ void UserI::createArkusz(Arkusz* a){
             i--;
         }
         //
-        
-        
+
+
     }
-    
-    
+
+
 }
 
 void UserI::destroyArkusz(){
     cout<< "destroy"<<endl;
-    
+    delete a;
+    a=nullptr;
+
 }

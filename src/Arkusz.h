@@ -13,26 +13,27 @@ class Arkusz{
 	int s=1;
 	string name="";
     bool empty=true;
-	
-public:	
+    int position=0;
+
+public:
 	Arkusz(int s=0);
-	
+
 	Arkusz(int rows, int columns);
-	
+
 	~Arkusz();
-	
+
 	int getSizeR();
 	int getSizeC();
     void setSize(int r, int c);
 	bool isEmpty();
 	void printVal(int r,int c);
-	
+
 	void setVal(int r, int c, int set_val);
-	
+
 	void init();
     void pushBack(Column* pCol);
 	void popBack();
-	
+
 	void resize(int newS = -1);
 	void clear();
     void clearCols();

@@ -2,19 +2,20 @@
 #include <stdlib.h>
 
 
-Arkusz::Arkusz(int s){		
+Arkusz::Arkusz(int s){
 		this->s=s;
-		ptCol= new Column*[s];		
+		ptCol= new Column*[s];
 }
-	
+
 Arkusz::Arkusz(int rows, int columns){
 		this->s=columns;
 		ptCol= new Column*[columns];
 		sizeR=rows;
 		sizeC=columns;
 		empty=true;
+		position=0;
 		//init();
-		
+
 }
 
 void Arkusz::setVal(int r, int c, int set_val){
@@ -24,7 +25,7 @@ void Arkusz::setVal(int r, int c, int set_val){
 void Arkusz::init(){
 		for (int i=0; i<sizeC ; i++){
             std::string name = "\""+std::to_string(i)+"\"";
-            
+
 			ptCol[i]=new IntColumn(sizeR, name);
 		}
 }
@@ -33,10 +34,10 @@ void Arkusz::pushBack(Column* pCol){
     if(s<=sizeC){
         resize(-1);//podwojenie pamięci na kolumny
     }
-    ptCol[sizeC]=pCol;
-    sizeC++;
+    ptCol[position]=pCol;
+    position++;
     empty=false;
-    
+
 }
 //doesnt return last item, just delets it.
 void Arkusz::popBack(){
@@ -50,8 +51,8 @@ void Arkusz::popBack(){
     }
 }
 
-	
-Arkusz::~Arkusz(){	
+
+Arkusz::~Arkusz(){
 		clear();
 }
 
@@ -85,34 +86,36 @@ void Arkusz::resize(int newS){
 			tempT[i]=ptCol[i];
 		}
 		delete ptCol;
-		
+
 		s=newS;
-		
-		ptCol=tempT;		
+
+		ptCol=tempT;
 }
 
 void Arkusz::clear(){
 			for(int i=0; i<s; i++){
 			delete ptCol[i];
 		}
-	
+
 		delete[] ptCol;
-		
+
 }
 
 void Arkusz::clearCols(){
-			for(int i=0; i<sizeC; i++){
-			delete ptCol[i];
+        for(int i=0; i<sizeC; i++){
+            popBack();
+			//delete ptCol[i];
 		}
 		empty=true;
 		sizeC=0;
         sizeR=0;
-		
+        position=0;
+
 }
 
 void Arkusz::printColName(int c){
     string name="";
     name = ptCol[c]->getName();
     std::cout<<name;
-    
+
 }
