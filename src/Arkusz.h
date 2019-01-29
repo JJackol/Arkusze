@@ -34,6 +34,7 @@ public:
     void pushBack(Column* pCol);
 	void popBack();
 
+    void reset();
 	void resize(int newS = -1);
 	void clear();
     void clearCols();

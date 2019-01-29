@@ -9,6 +9,7 @@ class UserI{
 	string helloM="hello";
 	string menu="";
     string message="message";
+    string editMenu="";
 
 	//FormatSettings sett;
 
@@ -20,14 +21,20 @@ public:
 	void sayHello();
 
 	void print(Arkusz *a);
-	string prompt(string m);
-	char getChar(string);
-	int getInt(string);
+
 	void printMenu();
+    void printEditMenu();
 
     void createArkusz();
     void destroyArkusz();
 
+
+    void edit();
+
+    //input methods
+	string prompt(string m);
+	char getChar(string);
+	int getInt(string);
 };
 
 

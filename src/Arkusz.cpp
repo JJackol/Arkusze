@@ -76,6 +76,14 @@ void Arkusz::printVal(int r,int c){
 	return ptCol[c]->printVal(r);
 }
 
+void Arkusz::reset(){
+    for (int i=0; i<sizeC ; i++){
+        for (int j=0 ; j<sizeR; j++){
+            setVal(j,i,0);
+        }
+    }
+}
+
 // doubles the size if newS<0
 void Arkusz::resize(int newS){
 		if (newS<0){

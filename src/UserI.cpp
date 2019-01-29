@@ -8,8 +8,15 @@ UserI::UserI(Arkusz* ark){
 	menu+=  "1.Nowy arkusz\n";
 	menu+=	"2.Usun arkusz\n";
 	menu+=	"3.Edytuj arkusz\n";
-	menu+=	"4.Zapisz arkusz";
-	menu+=	"5.Wczytaj arkusz";
+    menu+=	"4.Inne operacje\n";
+	//menu+=	"4.Zapisz arkusz\n";
+	//menu+=	"5.Wczytaj arkusz";
+
+	editMenu="";
+	editMenu+="1.Zmien wartosc komorki \n";
+	editMenu+="2.resetuj wartosc komorki \n";
+	editMenu+="3.resetuj wszystkie komorki ";
+
 }
 UserI::~UserI(){
 
@@ -29,9 +36,11 @@ void UserI::mainLoop(){
 				createArkusz();
 				break;
 			case 2:
+			    destroyArkusz();
 				break;
-				destroyArkusz();
+
 			case 3:
+			    edit();
 				break;
 			case 4:
 				break;
@@ -104,6 +113,10 @@ int UserI::getInt(string m){
 void UserI::printMenu(){
 		cout<<menu<<endl;
 	}
+void UserI::printEditMenu(){
+    cout<<editMenu<<endl;
+}
+
 
 void UserI::createArkusz(){
     //delete a;
@@ -155,5 +168,51 @@ void UserI::destroyArkusz(){
     cout<< "destroy"<<endl;
     delete a;
     a=nullptr;
+
+}
+
+
+void UserI::edit()
+{
+    cout<<"edit..."<<endl;
+    int r,c,v;
+    int s=1;
+
+    do{
+		print(a);
+        cout<<endl<<message<<endl<<endl;
+        message="";
+		printEditMenu();
+		s=getInt("Wprowadz liczbe  [0 aby wyjsc]");
+
+
+		switch(s){
+			case 1:
+			    cout<<"Wprowadzanie wartosci:\n";
+				r=getInt("ktory wiersz? \t (numerowane od zera)");
+				c=getInt("ktora kolumna? \t (numerowane od zera)");
+				v=getInt("wprowadz wartosc)");
+				a->setVal(r,c,v);
+				break;
+			case 2:
+			    cout<<"resetowanie wartosci:\n";
+				r=getInt("ktory wiersz? \t (numerowane od zera)");
+				c=getInt("ktora kolumna? \t (numerowane od zera)");
+				a->setVal(r,c,0);
+				break;
+
+			case 3:
+                a->reset();
+				break;
+            default:
+				break;
+
+		}
+
+
+	}while(s);
+
+
+
 
 }
